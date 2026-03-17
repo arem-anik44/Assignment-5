@@ -7,7 +7,7 @@ const loadContainer=(st='all')=>{
     const url ="https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url).then(res=>res.json()).then(data=>{
         
-        if(st==="all"){displayContainer(data.data);}
+        if(st==="all"){displayContainer(data.data,st);}
         else  {displayContainerSpecific(data.data, st);}
         
     });
@@ -33,15 +33,28 @@ const removeActive = () => {
 // "createdAt": "2024-01-15T10:30:00Z",
 // "updatedAt": "2024-01-15T10:30:00Z"
 // },
+const updateNumberLogo = (count, st) => {
+    document.getElementById("numberUpdate").innerText = count;
 
-const displayContainer=(cards)=>{
+    const element = document.getElementById("imageUpdate");
 
-    
+    element.innerHTML = `
+        ${st === 'all'
+            ? '<img src="./assets/Aperture.png" class="bg-[#ECE4FF] rounded-full p-2">'
+            : '<img src="./assets/list-ul-solid.png" class="bg-[#ECE4FF] rounded-full p-2 w-12 h-12">'
+        }
+    `;
+};
+
+
+const displayContainer=(cards,st)=>{
+
+    let count =0;
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML ="";
     cards.forEach(card => {
-        console.log(card);
-
+        
+        count =count +1;
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
@@ -78,18 +91,22 @@ const displayContainer=(cards)=>{
 
 
     });
+    updateNumberLogo(count,st);
 };
+
+
+
 const displayContainerSpecific=(cards,st)=>{
 
-    
+    let count =0;
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML ="";
     cards.forEach(card => {
 
-    let count =0;
+    
 
     if(card.status === st){
-        console.log(card);
+        
         count=count+1;
 
         const cardHolder= document.createElement("div");
@@ -131,7 +148,11 @@ const displayContainerSpecific=(cards,st)=>{
     
         
 
-    });
+    }
+    
+
+);
+updateNumberLogo(count,st);
 };
 
 
