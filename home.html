@@ -27,29 +27,33 @@
 </head>
 <body>
 
-    <section class="">
-        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border px-4 py-10 mx-auto my-40 space-y-2">
-           <div class="flex flex-col text-center mb-5">
-            <img src="./assets/github-logo.png" class="w-25 h-26 mx-auto mb-3">
-            <h2 class="font-semibold text-2xl">Github Issue Tracker</h2>
-            <p class="text-[#64748B]">Sign in to manage your issue</p>
-           </div>
-
-            <label class="label text-[#3D3746] font-medium">Username</label>
-            <input type="text" id="username-input" class="input" placeholder="Enter Username" />
-
-            <label class="label text-[#3D3746] font-medium">Password</label>
-            <input type="password" id="pass-input" class="input" placeholder="Enter Password" />
-
-            <button id="signin-btn" class="btn btn-primary mt-4">Sign In</button>
-        </fieldset>
-    </section>
+    <header>
+        <div class="navbar bg-base-100 shadow-sm px-10 ">
+            <div class="flex items-center  flex-1 gap-3">
+                <img class="w-10 h-10" src="./assets/github-logo.png" alt="">
+                <h2 class="btn-ghost text-xl font-semibold">Github Issue Tracker</h2>
+            </div>
+            <div class="flex gap-2">
+                <div class="join">
+                    <div>
+                        <label class="input validator join-item">
+                        <i class="fa-brands fa-sistrix"></i>
+                        <input type="text" placeholder="Search" required />
+                        </label>
+                        <div class="validator-hint hidden">Enter valid email address</div>
+                    </div>
+                    <button class="btn btn-neutral join-item"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                
+            </div>
+        </div>
+    </header>
     
 
 
 
 
-    <script src="./js/code.js"></script>
+    
     
 </body>
 </html>
