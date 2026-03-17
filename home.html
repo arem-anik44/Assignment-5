@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Github Issue Tracker</title>
+    <title>Github Issue Tracker | Home</title>
 
     <!-- favicon -->
      <link rel="shortcut icon" href="./assets/github-brands-solid.png" type="image/x-icon">
 
     
     <!-- daisyui and tailwind -->
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- font awesome -->
@@ -18,12 +18,12 @@
 
 
     <!-- font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- link css sheets -->
-     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style2.css">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
                         <i class="fa-brands fa-sistrix"></i>
                         <input type="text" placeholder="Search" required />
                         </label>
-                        <div class="validator-hint hidden">Enter valid email address</div>
+                        <div class="validator-hint ">Enter valid email address</div>
                     </div>
                     <button class="btn btn-neutral join-item"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
@@ -48,11 +48,68 @@
             </div>
         </div>
     </header>
+
+    <section class=" mx-auto mt-10 w-11/12 shadow-gray-lg">
+
+    <div class="nav-btn space-x-2.5 bg-white p-6 border border-gray-200 shadow-xl ">
+        <button class="btn btn-neutral btn-outline active w-25">All</button>
+        <button class="btn btn-neutral btn-outline w-25">Open</button>
+        <button class="btn btn-neutral btn-outline w-25">Closed</button>
+    </div>
+
+    <div id="issue-container" class="p-6 mt-10 border border-gray-200 shadow-xl flex justify-between">
+        <div class="flex items-center gap-3">
+            <img src="./assets/Aperture.png" class="bg-[#ECE4FF] rounded-full p-2" alt="">
+            <div class="space-y-1">
+                <h2 class="font-semibold"><span>50</span> Issues</h2>
+                <p class="text-[#64748B] text-[14px]">Track and manage your project issues</p>
+            </div>
+            
+        </div>
+        <div class="flex gap-3">
+            <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-circle" style="color: rgb(0,169,110);"></i>
+                <p>Open</p>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-circle" style="color: rgb(168,85,247);"></i>
+                <p>Closed</p>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <section id="cards-container" class="mt-15 w-11/12 mx-auto grid grid-cols-3 gap-3 ">
+        <div class="card w-100% ">
+            <button class=" shadow-lg space-y-4 rounded pt-5 ">
+                <div class="flex justify-between items-center px-6">
+                    <img src="./assets/Open-Status.png" alt="">
+                    <h4 class="btn bg-[#FEECEC] rounded-2xl text-red-500 text-[12px]">HIGH</h4>
+                </div>
+                <div class="px-4 text-left space-y-3  border-b border-gray-300">
+                    <h2 class="font-semibold  ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                    <p class="text-[14px] text-[#64748B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt error ullam iste?</p>
+                    <div id="labels" class="flex items-center gap-2 pt-3 pb-6">
+                        <h4 class="btn bg-[#FDE68A] rounded-2xl text-[#D97706]">bug</h4>
+                        <h4 class="btn bg-[#FDE68A] rounded-2xl text-[#D97706]">help Wanted</h4>
+                    </div>
+                </div>
+
+                <div class="text-left text-[#64748B] px-5">
+                    <p>#1 by john_doe</p>
+                    <p>1/15/2024</p>
+                </div>
+            </button>
+        </div>
+    </section>
+    
     
 
 
 
 
+    <script src="./js/code2.js"></script>
     
     
 </body>

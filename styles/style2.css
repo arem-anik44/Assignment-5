@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+*{
+    font-family: "Geist", sans-serif;
+}
+
+.active{
+    background-color: blue;
+    color: white;
+}
+
+/* A855F7 */
+/* 00A96E */
