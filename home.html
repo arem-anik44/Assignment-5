@@ -52,9 +52,9 @@
     <section class=" mx-auto mt-10 w-11/12 shadow-gray-lg">
 
     <div class="nav-btn space-x-2.5 bg-white p-6 border border-gray-200 shadow-xl ">
-        <button class="btn btn-neutral btn-outline active w-25">All</button>
-        <button class="btn btn-neutral btn-outline w-25">Open</button>
-        <button class="btn btn-neutral btn-outline w-25">Closed</button>
+        <button id="all-btn" onclick="showAll()" class="btn btn-neutral btn-outline active click-btn w-25">All</button>
+        <button id="open-btn" onclick="showOpen()" class="btn btn-neutral btn-outline click-btn w-25">Open</button>
+        <button id="closed-btn" onclick="showClosed()" class="btn click-btn btn-neutral btn-outline w-25">Closed</button>
     </div>
 
     <div id="issue-container" class="p-6 mt-10 border border-gray-200 shadow-xl flex justify-between">
@@ -80,28 +80,8 @@
 
     </section>
 
-    <section id="cards-container" class="mt-15 w-11/12 mx-auto grid grid-cols-3 gap-3 ">
-        <div class="card w-100% ">
-            <button class=" shadow-lg space-y-4 rounded pt-5 ">
-                <div class="flex justify-between items-center px-6">
-                    <img src="./assets/Open-Status.png" alt="">
-                    <h4 class="btn bg-[#FEECEC] rounded-2xl text-red-500 text-[12px]">HIGH</h4>
-                </div>
-                <div class="px-4 text-left space-y-3  border-b border-gray-300">
-                    <h2 class="font-semibold  ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-                    <p class="text-[14px] text-[#64748B]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt error ullam iste?</p>
-                    <div id="labels" class="flex items-center gap-2 pt-3 pb-6">
-                        <h4 class="btn bg-[#FDE68A] rounded-2xl text-[#D97706]">bug</h4>
-                        <h4 class="btn bg-[#FDE68A] rounded-2xl text-[#D97706]">help Wanted</h4>
-                    </div>
-                </div>
-
-                <div class="text-left text-[#64748B] px-5">
-                    <p>#1 by john_doe</p>
-                    <p>1/15/2024</p>
-                </div>
-            </button>
-        </div>
+    <section id="cards-container" class="mt-15 w-11/12 mx-auto grid grid-cols-4 gap-3 ">
+        
     </section>
     
     
