@@ -3,9 +3,9 @@
 const manageSpinner = (status) => {
   if (status == true) {
     document.getElementById("spinner").classList.remove("hidden");
-    document.getElementById("card-container").classList.add("hidden");
+    document.getElementById("cards-container").classList.add("hidden");
   } else {
-    document.getElementById("card-container").classList.remove("hidden");
+    document.getElementById("cards-container").classList.remove("hidden");
     document.getElementById("spinner").classList.add("hidden");
   }
 };
@@ -45,7 +45,7 @@ const displayWordDetails = (word) => {
                 <div class="bg-[#F8FAFC] flex gap-40 items-center p-8 rounded mt-6">
                     <div>
                         <h5 class="text-[#64748B] mb-2">Assignee: </h6>
-                        <h3>${(word.assignee) ? word.assignee: "assignee_not_found"}</h3>
+                        <h3>${(word.assignee) ? word.assignee: "not_found"}</h3>
                     </div>
                     <div class="text-center">
                         <h5 class="text-[#64748B] mb-1">Priority: </h5>
@@ -60,17 +60,22 @@ const displayWordDetails = (word) => {
 
 
 
-const loadContainer=(st='all')=>{
-    
-    const url ="https://phi-lab-server.vercel.app/api/v1/lab/issues"
-    fetch(url).then(res=>res.json()).then(data=>{
-        
-        if(st==="all"){displayContainer(data.data,st);}
-        else  {displayContainerSpecific(data.data, st);}
+const loadContainer = (st = 'all') => {
+    manageSpinner(true); 
 
-        
-        
-    });
+    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            if (st === "all") {
+                displayContainer(data.data, st);
+            } else {
+                displayContainerSpecific(data.data, st);
+            }
+        })
+        .finally(() => {
+            manageSpinner(false); 
+        });
 };
 
 const createElements = (arr) => {
@@ -235,19 +240,20 @@ document.getElementById("btn-search").addEventListener("click", () => {
   removeActive();
   const input = document.getElementById("input-search");
   const searchValue = input.value.trim().toLowerCase();
-  
 
-  url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
+  manageSpinner(true); 
+
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
 
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      
-
       displayLevelWord(data.data);
+    })
+    .finally(() => {
+      manageSpinner(false); 
     });
 });
-
 
 const displayLevelWord=(cards)=>{
     let count=0;
