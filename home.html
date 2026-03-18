@@ -28,26 +28,38 @@
 <body>
 
     <header>
-        <div class="navbar bg-base-100 shadow-sm px-10 ">
-            <div class="flex items-center  flex-1 gap-3">
-                <img class="w-10 h-10" src="./assets/github-logo.png" alt="">
-                <h2 class="btn-ghost text-xl font-semibold">Github Issue Tracker</h2>
-            </div>
-            <div class="flex gap-2 pt-5 w-full md:w-auto">
-                <div class="join w-full md:w-auto">
-                    <div class="w-full">
-                        <label class="input validator join-item w-full md:w-64">
-                            <i class="fa-brands fa-sistrix"></i>
-                            <input type="text" placeholder="Search" id="input-search" class="w-full" required />
-                        </label>
-                        <div class="validator-hint">Enter valid keyword to search</div>
-                    </div>
-                    <button id="btn-search" class="btn btn-neutral join-item">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-            </div>
+       
+
+        <div class="navbar bg-base-100 shadow-sm px-4 md:px-10 flex flex-col md:flex-row gap-3 space-y-3">
+
+    
+    <div class="flex items-center flex-1 gap-3 w-full md:w-auto">
+        <img class="w-8 h-8 md:w-10 md:h-10" src="./assets/github-logo.png" alt="">
+        <h2 class="btn-ghost text-lg md:text-xl font-semibold">Github Issue Tracker</h2>
+    </div>
+
+    
+    <div class="w-full md:w-auto">
+        <div class="join w-full">
+            
+            <label class="input join-item w-full">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input 
+                    type="text" 
+                    placeholder="Search..." 
+                    id="input-search" 
+                    class="w-full"
+                />
+            </label>
+
+            <button id="btn-search" class="btn btn-neutral join-item">
+                Search
+            </button>
+
         </div>
+    </div>
+
+</div>
     </header>
 
     <section class=" mx-auto mt-10 w-11/12 shadow-gray-lg">

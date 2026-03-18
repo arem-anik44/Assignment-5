@@ -1,5 +1,6 @@
 
-
+const openColor="#00A96E";
+const closedColor ="#A855F7";
 const manageSpinner = (status) => {
   if (status == true) {
     document.getElementById("spinner").classList.remove("hidden");
@@ -25,7 +26,7 @@ const displayWordDetails = (word) => {
   const detailsBox = document.getElementById("details-container");
   detailsBox.innerHTML = `
     <div class=" text-left   ">
-            <div class="p space-y-3">
+            <div class="p space-y-3 ">
                 <h2 class="font-bold text-3xl">${word.title}</h2>
                 <div class="flex items-center gap-3">
                     <p class="btn btn-primary rounded-3xl py-1 text-[14px] text-white">Opened</p>
@@ -109,13 +110,16 @@ const displayContainer=(cards,st)=>{
     let count =0;
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML ="";
+    
+
+   
     cards.forEach(card => {
         
         count =count +1;
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col  border-t-4 border-[${(card.status==='open')? openColor:closedColor}]" >
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
@@ -142,8 +146,9 @@ const displayContainer=(cards,st)=>{
         
         
         `;
-
+        
         cardsContainer.append(cardHolder);
+        
 
 
     });
@@ -169,7 +174,7 @@ const displayContainerSpecific=(cards,st)=>{
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col  border-t-4 border-[${(card.status==='open')? openColor:closedColor}] ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
@@ -264,7 +269,7 @@ const displayLevelWord=(cards)=>{
      const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col  border-t-4 border-[${(card.status==='open')? openColor:closedColor}] ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
