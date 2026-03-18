@@ -64,13 +64,13 @@
 
     <section class=" mx-auto mt-10 w-11/12 shadow-gray-lg">
 
-    <div class="nav-btn space-x-2.5 bg-white p-6 border border-gray-200 shadow-xl ">
+    <div class="nav-btn space-x-2.5 bg-white p-6 border border-gray-200 shadow-xl flex flex-wrap gap-y-2">
         <button id="all-btn" onclick="showAll()" class="btn btn-neutral btn-outline active click-btn w-25">All</button>
         <button id="open-btn" onclick="showOpen()" class="btn btn-neutral btn-outline click-btn w-25">Open</button>
         <button id="closed-btn" onclick="showClosed()" class="btn click-btn btn-neutral btn-outline w-25">Closed</button>
     </div>
 
-    <div id="issue-container" class="p-6 mt-10 border border-gray-200 shadow-xl flex justify-between">
+    <div id="issue-container" class="p-6 mt-10 border border-gray-200 shadow-xl flex flex-col md:flex-row gap-y-3 justify-between">
         <div class="flex items-center gap-3">
             <div id="imageUpdate">
                 <img src="./assets/Aperture.png" class="bg-[#ECE4FF] rounded-full p-2"  alt="">
