@@ -10,6 +10,54 @@ const manageSpinner = (status) => {
 };
 
 
+const loadCardDetail = async (id) => {
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayWordDetails(details.data);
+};
+
+// {"id": 33,"title": "Add bulk operations support","description": "Allow users to perform bulk actions like delete, update status on multiple items at once.","status": "open","labels": ["enhancement"],"priority": "low","author": "bulk_barry","assignee": "","createdAt": "2024-02-02T10:00:00Z","updatedAt": "2024-02-02T10:00:00Z"}
+
+const displayWordDetails = (word) => {
+  console.log(word);
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+    <div class=" text-left   ">
+            <div class="p space-y-3">
+                <h2 class="font-bold text-3xl">${word.title}</h2>
+                <div class="flex items-center gap-3">
+                    <p class="btn btn-primary rounded-3xl py-1 text-[14px] text-white">Opened</p>
+                    <img src="./assets/Ellipse 5.png" alt="">
+                    <p class="text-[#64748B]">Open by Fahim Ahmed</p>
+                    <img src="./assets/Ellipse 5.png" alt="">
+                    <p class="text-[#64748B]">22/02/2026</p>
+                </div>
+                <div class="mt-6">
+                    ${createElements(word.labels)}
+                </div>
+
+                <div class="mt-6">
+                    <p class="text-[#64748B]">${word.description}</p>
+                </div>
+
+                <div class="bg-[#F8FAFC] flex gap-40 items-center p-8 rounded mt-6">
+                    <div>
+                        <h5 class="text-[#64748B] mb-2">Assignee: </h6>
+                        <h3>${(word.assignee) ? word.assignee: "assignee_not_found"}</h3>
+                    </div>
+                    <div class="text-center">
+                        <h5 class="text-[#64748B] mb-1">Priority: </h5>
+                        <h4 class="btn bg-[#FEECEC] rounded-2xl text-red-500 text-[12px]">${word.priority.toUpperCase()}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+  document.getElementById("word_modal").showModal();
+};
+
+
 
 const loadContainer=(st='all')=>{
     
@@ -19,7 +67,7 @@ const loadContainer=(st='all')=>{
         if(st==="all"){displayContainer(data.data,st);}
         else  {displayContainerSpecific(data.data, st);}
 
-        manageSpinner(false);
+        
         
     });
 };
@@ -61,7 +109,7 @@ const displayContainer=(cards,st)=>{
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
@@ -115,7 +163,7 @@ const displayContainerSpecific=(cards,st)=>{
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
@@ -186,7 +234,7 @@ document.getElementById("btn-search").addEventListener("click", () => {
   removeActive();
   const input = document.getElementById("input-search");
   const searchValue = input.value.trim().toLowerCase();
-  manageSpinner(true)
+  
 
   url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
 
@@ -209,7 +257,7 @@ const displayLevelWord=(cards)=>{
      const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
