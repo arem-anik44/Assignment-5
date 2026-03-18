@@ -1,4 +1,5 @@
 
+
 const manageSpinner = (status) => {
   if (status == true) {
     document.getElementById("spinner").classList.remove("hidden");
@@ -109,7 +110,7 @@ const displayContainer=(cards,st)=>{
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
@@ -163,7 +164,7 @@ const displayContainerSpecific=(cards,st)=>{
         const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
@@ -257,7 +258,7 @@ const displayLevelWord=(cards)=>{
      const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
-            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 h-full flex flex-col ">
+            <button onclick="loadCardDetail(${card.id})" class=" shadow-lg space-y-4 rounded pt-5 w-full h-full flex flex-col ">
                 <div class="flex justify-between items-center px-6 h-[40px]">
                     ${card.status === 'open'
                         ? `<img src="./assets/Open-Status.png" alt="">`
