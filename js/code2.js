@@ -1,14 +1,25 @@
 
-
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("card-container").classList.add("hidden");
+  } else {
+    document.getElementById("card-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
 
 
 
 const loadContainer=(st='all')=>{
+    
     const url ="https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url).then(res=>res.json()).then(data=>{
         
         if(st==="all"){displayContainer(data.data,st);}
         else  {displayContainerSpecific(data.data, st);}
+
+        manageSpinner(false);
         
     });
 };
@@ -24,21 +35,7 @@ const removeActive = () => {
   lessonButtons.forEach((btn) => btn.classList.remove("active"));
 };
 
-// {
-// "id": 1,
-// "title": "Fix navigation menu on mobile devices",
-// "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-// "status": "open",
-// "labels": [
-// "bug",
-// "help wanted"
-// ],
-// "priority": "high",
-// "author": "john_doe",
-// "assignee": "jane_smith",
-// "createdAt": "2024-01-15T10:30:00Z",
-// "updatedAt": "2024-01-15T10:30:00Z"
-// },
+
 const updateNumberLogo = (count, st) => {
     document.getElementById("numberUpdate").innerText = count;
 
@@ -97,6 +94,7 @@ const displayContainer=(cards,st)=>{
 
     });
     updateNumberLogo(count,st);
+    
 };
 
 
@@ -157,6 +155,7 @@ const displayContainerSpecific=(cards,st)=>{
 
 );
 updateNumberLogo(count,st);
+
 };
 
 
@@ -187,7 +186,7 @@ document.getElementById("btn-search").addEventListener("click", () => {
   removeActive();
   const input = document.getElementById("input-search");
   const searchValue = input.value.trim().toLowerCase();
-  console.log(searchValue);
+  manageSpinner(true)
 
   url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
 
@@ -202,11 +201,11 @@ document.getElementById("btn-search").addEventListener("click", () => {
 
 
 const displayLevelWord=(cards)=>{
-    
+    let count=0;
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML ="";
     cards.forEach(card => {
-
+        count= count+1;
      const cardHolder= document.createElement("div");
         cardHolder.innerHTML = `
         
@@ -241,4 +240,9 @@ const displayLevelWord=(cards)=>{
         cardsContainer.append(cardHolder);
 
     });
+    updateNumberLogo(count,"search");
+    
 };
+
+
+
